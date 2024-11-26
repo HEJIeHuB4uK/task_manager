@@ -9,6 +9,7 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -17,8 +18,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework.authtoken',     
+    'drf_spectacular', 
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,6 +52,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'task_manager.wsgi.application'
+ASGI_APPLICATION = 'task_manager.asgi.application'
 
 DATABASES = {
     'default': {
@@ -56,6 +60,18 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": venv("POSTGRES_DB", default=""),
+#         "USER": venv("POSTGRES_USER", default=""),
+#         "PASSWORD": venv("POSTGRES_PASSWORD", default=""),
+#         "HOST": venv("POSTGRES_HOST", default=""),
+#         "PORT": venv("POSTGRES_PORT", default=""),
+#     }
+# }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -84,6 +100,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'main.User'
+
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': ['main.auth.Bearer']
+    'DEFAULT_AUTHENTICATION_CLASSES': ['main.auth.Bearer'],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema'
 }

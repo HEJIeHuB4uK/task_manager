@@ -7,10 +7,12 @@ class UserSerializeer(serializers.ModelSerializer):
         model = User
         fields = '__all__'
 
+
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = '__all__'
+
 
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,13 +26,14 @@ class Registration(serializers.ModelSerializer):
         model = User
         fields = ('email', 'username', 'password')
 
-    def save_in_database(self, **kwargs):
+    def save(self, **kwargs):
         user = User()
         user.email = self.validated_data['email']
         user.username = self.validated_data['username']
         user.set_password(self.validated_data['password'])
         user.save()
         return user
+
 
 class Login(serializers.ModelSerializer):
     username = serializers.CharField()
@@ -46,4 +49,3 @@ class Login(serializers.ModelSerializer):
                                 username=username, password=password)
         attrs['user'] = user
         return attrs
-    
